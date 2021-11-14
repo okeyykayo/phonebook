@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/contactListFragment">
+
+    <fragment
+        android:id="@+id/contactListFragment"
+        android:name="com.slothdeboss.phonebook.ui.main.ContactListFragment"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_contact_list">
+        <action
+            android:id="@+id/toContactDetail"
+            app:destination="@id/contactDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.slothdeboss.phonebook.ui.detail.ContactDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_contact_details">
+        <action
+            android:id="@+id/backToContacts"
+            app:destination="@id/contactListFragment" />
+        <argument
+            android:name="contactId"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <action
+            android:id="@+id/toUpdateContact"
+            app:destination="@id/updateContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateContactFragment"
+        android:name="com.slothdeboss.phonebook.ui.detail.UpdateContactFragment"
+        android:label="Edit contact"
+        tools:layout="@layout/fragment_update_contact">
+        <action
+            android:id="@+id/backToContacts"
+            app:destination="@id/contactListFragment" />
+        <argument
+            android:name="contactId"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
+</navigation>
